@@ -1,0 +1,13 @@
+-- إضافة جدول إعدادات السيرفر
+CREATE TABLE IF NOT EXISTS server_settings (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  userId INT NOT NULL,
+  sshHost VARCHAR(255),
+  sshPort INT DEFAULT 22,
+  sshUser VARCHAR(100),
+  sshPrivateKey TEXT,
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY unique_user_server (userId),
+  FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
+);
